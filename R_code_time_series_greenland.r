@@ -40,6 +40,7 @@ plotRGB(tgr, r=1, g=2, b=3, stretch="lin") # sovrapposizione temporale
 ### Example 2: NO2 decrease during the lockdown period
 ######################################################
 
+library(raster)
 setwd("C:/lab/EN") # Windows
 
 # Importo il primo layer
@@ -75,6 +76,28 @@ plot(en113, col=cl)
 difen <- en[[1]] - en[[13]]
 cldif <- colorRampPalette(c('blue','white','red'))(100)
 plot(difen, col=cldif)
+
+# plotRGB of three files together
+plotRGB(en, r=1, g=7, b=13, stretch="lin")
+plotRGB(en, r=1, g=7, b=13, stretch="hist")
+
+sessionInfo() #dà info sula sessione di R
+Sys.time() #dà info sulla data e ora attuale
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
