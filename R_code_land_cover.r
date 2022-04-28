@@ -106,8 +106,16 @@ geom_bar(stat="identity", fill="white")
 ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) + 
 geom_bar(stat="identity", fill="white")
 
+# pdf
+pdf("percentages_1992.pdf")
+ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) + 
+geom_bar(stat="identity", fill="white")
+dev.off()
 
-
+pdf("percentages_2006.pdf")
+ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) + 
+geom_bar(stat="identity", fill="white")
+dev.off()
 
 
 
