@@ -55,9 +55,63 @@ freq(l92c$map)
 # class 1:  35333 pixels (agricultural areas (+ water))
 # class 2: 305959 pixels (forest)
 
+tot92 <- 341292
+
+# proportion of classes
+prop_forest_92 <- 305959 / tot92
+
+# percent of classes
+perc_forest_92 <- 305959 * 100 / tot92
+
+# Exercise: calculate the percentage of agricultural areas in 1992
+# method 1
+perc_agr_92 <- 100 - perc_forest_92
+# method 2
+perc_agr_92 <- 35333 * 100 / tot92
+
+# percent_forest_92: 89.64728
+# percent_agr_92: 10.35272
+
 freq(l06c$map)
 # class 1: 178151 pixels (forest)
 # class 2: 164575 pixels (agricultural areas (+ water))
+
+# percentage 2006
+tot06 <- 342726
+percent_forest_06 <- 178151 * 100 / tot06
+percent_agr_06 <- 100 - percent_forest_06
+
+# percent_forest_06: 51.98059
+# percent_agr_06: 48.01941
+
+# FINAL DATA:
+# percent_forest_92: 89.64728
+# percent_agr_92: 10.35272
+# percent_forest_06: 51.98059
+# percent_agr_06: 48.01941
+
+# Let's build a dataframe with our data
+# Columns (fields)
+class <- c("Forest", "Agriculture")
+percent_1992 <- c(89.64728, 10.35272)
+percent_2006 <- c(51.98059, 48.01941)
+
+multitemporal <- data.frame(class, percent_1992, percent_2006)
+
+# 1992
+ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) + 
+geom_bar(stat="identity", fill="white")
+
+# Exercise: make the same graph for 2006
+ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) + 
+geom_bar(stat="identity", fill="white")
+
+
+
+
+
+
+
 
 
 
