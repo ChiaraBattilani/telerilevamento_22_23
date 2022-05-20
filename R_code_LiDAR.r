@@ -50,8 +50,11 @@ scale_fill_viridis() +
 ggtitle("difference in CHM") # giallo positivo è dove è cresciuta pianta, blu negativo è dove non c'è più pianta
 
 
-library(lidR)
-point_cloud
+point_cloud <- readLAS("point_cloud.laz")
+plot(point_cloud)
+
+
+
 
 
 
