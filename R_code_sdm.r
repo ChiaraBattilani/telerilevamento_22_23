@@ -21,7 +21,75 @@ points(species[occ == 0,], col="red", pch=19) # così aggungo i punti 0 delle as
 path <- system.file("external", package="sdm")
 
 # list the predictors
-lst <- list.files(path=path, pattern='asc', full.names=T)
+lst <- list.files(path=path, pattern='asc', full.names=T) # full.names is needed in case you want to maintain the whole path in the name of the file
+
+# stack (non serve il brick in quetso caso)
+preds <- stack(lst) # non avremo le bande in questo caso, ma elevazione, precipitazione, temperatura e vegetazione
+
+cl <- colorRampPalette(c('blue','orange','red','yellow'))(100)
+plot(preds, col=cl)
+
+#plots of predictors with presences
+elev <- preds$elevation
+prec <- preds$precipitation
+temp <- preds$temperature
+vege <- preds$vegetation
+
+plot(elev, col=cl)
+points(species[occ == 1,], pch=19) # così non sovrascrivo il plot
+
+plot(prec, col=cl)
+points(species[occ == 1,], pch=19)
+
+plot(temp, col=cl)
+points(species[occ == 1,], pch=19) 
+
+plot(vege, col=cl) 
+points(species[occ == 1,], pch=19)
+
+# facciamo un modello a cui associamo le probabilità più o meno elevate ai dati di T, elev, prec e vege
+
+# data
+datasdm <- sdmData(train=species, predictors=preds)
+
+# model
+m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, data= datasdm, methods="glm")
+
+# make the raster output layer; tramite predict
+p1 <- predict(m1, newdata=preds) # sulla base del modello m1 dove è più prbabile trovare una specie
+
+# output
+plot(p1, col=cl)
+points(species[occ == 1,], pch=19)
+
+par(mfrow=c(2,3))
+plot(p1, col=cl)
+plot(elev, col=cl)
+plot(prec, col=cl)
+plot(temp, col=cl)
+plot(vege, col=cl)
+
+# alternative #2, così ho i titoli
+final <- stack(preds, p1)
+plot(final, col=cl)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
