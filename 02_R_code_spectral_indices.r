@@ -1,12 +1,13 @@
+# Carico e installo pacchetti
 library(raster)
-library(RStoolbox)
-# install.packages("rasterdiv")
+library(RStoolbox) # RStoolbox serve per calcolare l'indice di vegetazione
+# install.packages("rasterdiv") # rasterdiv serve per calcolare indici di diversità su matrici numeriche
 library(rasterdiv)
 
 # Settaggio WD in Windows
 setwd("C:/lab")
 
-# Exercise: import the first file -> defor1_.jpg -> give it the name l1992
+# Esercizio: importa il primo file defor1_.jpg e dagli il nome l1992
 l1992 <- brick("defor1_.jpg")
 
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
@@ -15,12 +16,12 @@ plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 # layer 2 = red
 # layer 3 = green
 
-# Exercise: import the second file -> defor2_.jpg -> give it the name l2006
+# Esercizio: importa il primo file defor2_.jpg e dagli il nome l2006
 l2006 <- brick("defor2_.jpg")
 
 plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
 
-# Exercise: plot in multiframe the two images with one on top of the other
+# Esercizio: plot in un multiframe le due immagini una sopra all'altra
 par(mfrow=c(2,1))
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
