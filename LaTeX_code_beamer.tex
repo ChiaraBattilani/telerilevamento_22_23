@@ -1,0 +1,83 @@
+\documentclass{beamer} % beamer è la parte di latex dedicata alle presentazioni
+\usepackage{color} % per avere differenti strutture (città) e colori (colonne) delle presentazioni https://mpetroff.net/files/beamer-theme-matrix/
+\usetheme{Berkeley} % Berlin, Madrid, Frankfurt
+\usecolortheme{crane} %dove, spruce, beetle
+
+\title{My first presentation under beamer!}
+\author{Chiara Battilani}
+
+\begin{document}
+
+\maketitle
+
+%per fare sommario
+\AtBeginSection[] % Do nothing for \section*
+{	
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection,currentsubsubsection]
+\end{frame}
+}
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{My first slide!} 
+\begin{itemize} % per elenchi puntati
+\item Mars' surface is covered with \textbf{craters} that formed when comets and/or asteroids impacted the red planet.
+\item \pause These craters are especially numerous in the \textbf{southern highlands} of Mars. % pausa tra apparizione di una frase e l'altra, crea 2 slide
+\item \pause Third sentence.
+\end{itemize}
+\end{frame}
+
+\section{Methods}
+
+\subsection{Instruments}
+
+\begin{frame}
+\frametitle{Instruments used}
+\centering %centrare immagine
+\includegraphics[width=0.7\textwidth]{sonda.jpg} %inserisce immagine ad una certa dimensione
+\end{frame}
+
+\begin{frame}
+\frametitle{Instruments used}
+\centering %centrare immagine
+\includegraphics[width=0.7\textwidth]{sonda2.jpg} %inserisce immagine ad una certa dimensione
+\end{frame}
+
+\subsection{Analysis}
+
+\begin{frame}
+\frametitle{The used formula}
+
+\centering %metto immagine assieme ad una formula
+\includegraphics[width=0.3\textwidth]{euler.jpg} \\
+
+\begin{equation}
+e^{i \pi} + 1 = 0
+\end{equation}
+\end{frame}
+
+\section{Results}
+
+%inserire due immagini vicine
+\begin{frame}
+\frametitle{Results}
+\centering
+\includegraphics[width=0.4\textwidth]{sonda.jpg} %calo le dimensioni se no non ci stanno una accanto all'altra
+\includegraphics[width=0.4\textwidth]{sonda.jpg}
+\end{frame}
+
+%inserire quattro immagini due sopra due sotto
+\begin{frame}
+\frametitle{Results}
+\centering
+\includegraphics[width=0.35\textwidth]{sonda.jpg} %calo le dimensioni se no non ci stanno una accanto all'altra
+\includegraphics[width=0.35\textwidth]{sonda.jpg} \\ %va a capo
+\smallskip %\bigskip, spazio tra img sopra e img sotto
+\includegraphics[width=0.35\textwidth]{sonda.jpg}
+\includegraphics[width=0.35\textwidth]{sonda.jpg}
+\end{frame}
+
+\end{document}
