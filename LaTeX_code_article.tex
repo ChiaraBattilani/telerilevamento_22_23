@@ -1,0 +1,134 @@
+% From R to Latex
+% funzione(arg1, arg2, ...)
+% #comment
+
+% \function{}
+% commenti in Latex
+
+\documentclass[a4paper, 12pt]{article} %specificare il tipo di documento
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %pacchetto per parti grafiche
+\usepackage{color} %per colori scritte
+\usepackage{hyperref} %per fare riferimenti a titoli, numeri img ecc, + \ref che è nel testo. Es. clicco su Fig. 1 e va a quella figura
+\usepackage{lineno} %per numerazione righe
+\usepackage{listings}
+\usepackage{natbib}
+\usepackage{setspace} % per lavorare su interlinea
+
+\linenumbers %funzione in lineno
+
+% in R: library()
+
+\newcommand{\tr}{\textcolor{red}}
+
+\title{My first document in LaTex} %Latex as symbol
+\author{Chiara Battilani}
+% \date{}
+
+% \begin{} -> \end{}
+\begin{document}
+
+\maketitle %titolo
+% \doublespacing %interlinea doppia
+\tableofcontents %indice
+
+% abstract
+\begin{abstract}
+Biodiversity conservation faces a methodological conundrum: Biodiversity measurement often relies on species, most of which are rare at various scales, especially prone
+to extinction under global change, but also the most challenging to sample and model.
+Predicting the distribution change of rare species using conventional species distribution models is challenging because rare species are hardly captured by most survey
+systems. When enough data are available, predictions are usually spatially biased towards locations where the species is most likely to occur, violating the assumptions of
+many modelling frameworks. Workflows to predict and eventually map rare species
+distributions imply important trade-­offs between data quantity, quality, representativeness and model complexity that need to be considered prior to survey and analysis.
+\end{abstract}
+
+% keywords wof
+\noindent \textbf{Keywords}: biodiversity; geology; Iceland lands; remote sensing; spatial ecology; statistics %no indentato e in grassetto
+
+\section{Introduction}\label{sec:intro}
+
+Since the 1920s, \textcolor{red}{aerial photography} has represented an important data source for the detection of landscape patterns and their change over time.
+
+% colour
+%\smallskip
+%\bigskip
+\tr{Multitemporal analysis represents a powerful method for the study of all ecological and geological processes that change over time. The literature involves several fields of study: from soil loss to natural resources assessment to vegetation and ecological dynamics.}
+
+% subsection
+
+\section{Study area}
+The study area is the nature reserve of Poggio all’Olmo in Tuscany (Figure  \ref{fig:islanda}), Italy (11 28 26E, 42 51 45N, WGS84 Datum). It is located on the side of Mt. Amiata,
+comprising 440 ha, with elevations ranging from 650 to 1016 m above mean sea level (m.s.l.) and slopes from 0 to 55.
+% figure and symbols
+
+\begin{figure}
+\centering
+ \includegraphics[width=0.8\textwidth]{islanda.jpg}
+ \caption{This is Iceland!}
+ \label{fig:islanda}
+\end{figure}
+
+%\newpage %va a pagina nuova
+\section{Methods}
+In this section I am going to describe the methods of this manuscript.
+
+They are basically divided into:
+\begin{itemize} %elenco puntato
+ \item The formulas
+ \item The code
+\end{itemize}
+
+Using numbers, they are basically divided into:
+\begin{enumerate} %elenco numerato
+ \item The formulas
+ \item The code
+\end{enumerate}
+
+First of all I will strat with the formulas used and then I will pass to the code!
+
+\subsection{Formulas}
+Here is the formula used in this manuscript:
+\begin{equation} % scrivere formule
+F = G \times \frac{m_{1} \times m_{2}}{d^{2 \times \mu}}
+\label{eq:newton}
+\end{equation}
+
+Let's make a more complex equation:
+\begin{equation}
+F = \frac{{}\sqrt[3]{G \times \frac{m_{1} \times m_{2}}{d^{2 \times \mu }}}}{-\sum{p(x) \times \log{p(x)}}}
+\end{equation} 
+%frazione, rad quadr, sommatoria, log
+
+Let's put a formula directly in the main text.
+We can apply this: $F=G \times m_{1}$
+
+\subsection{Code}
+Here is the code used in this manuscript:
+\lstinputlisting[language=R]{latex_r_code.r} %inserire codice r
+
+\section{Results}
+As a result of this study I found that the Cadmium is present in the analyzed soil with the total amount of 15\%. These results were achieved according to Equations \ref{eq:newton} %per scrivere percentuale
+
+\section{Discussion}
+As stetaed in Section \ref{sec:intro}
+
+Our results are in line with previous research dealing with remote sensing for biodiversity estimate \citep{Revell_2012, Potts_2022}. %citare articoli dentro le parentesi
+
+\citet{Revell_2012} told us that blablabla... % citare tizio
+
+Biodiversity has been predicted by remote sensing data based on e.g. heterogeneity f the landscape \citep{Massatti_2022}
+
+\begin{thebibliography}{999} %fare bibliografia
+
+\bibitem[Massatti and Winkler(2022)]{Massatti_2022}
+Massatti, R. and Winkler, D.E. (2022), Spatially explicit management of genetic diversity using ancestry probability surfaces. Methods Ecol Evol. Accepted Author Manuscript. \url{https://doi.org/10.1111/2041-210X.13902} % inseire url
+
+\bibitem[Potts et al.(2022)]{Potts_2022}
+Potts, J.R., Börger, L., Strickland, B.K. and Street, G.M. (2022), Assessing the predictive power of step selection functions: how social and environmental interactions affect animal space use. Methods Ecol Evol. Accepted Author Manuscript. \url{https://doi.org/10.1111/2041-210X.13904}
+
+\bibitem[Revell(2012)]{Revell_2012}
+Revell, L.J. (2012), phytools: an R package for phylogenetic comparative biology (and other things). Methods in Ecology and Evolution, 3: 217-223. \url{https://doi.org/10.1111/j.2041-210X.2011.00169.x}
+
+\end{thebibliography}
+
+\end{document}
