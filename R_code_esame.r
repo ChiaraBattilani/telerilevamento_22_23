@@ -68,5 +68,10 @@ png("mead2022_bande_CL.png")
 plot(mead_2022, col=cl, main="Lago Mead 2022")
 dev.off()
 
-# Visualizziamo ora le bande
+# Tramite la funzione "ggRGB" del pacchetto ggplot2, ottengo il raster con la colorazione reale dell'immagine; le bande sono nell'ordine:
+# red = banda 1
+# green = banda 2
+# blue = banda 3
+m1 <- ggRGB(mead_2000,r=1,g=2,b=3, stretch="lin") # utilizzo uno stretch lineare
+m2 <- ggRGB(mead_2022,r=1,g=2,b=3, stretch="lin") # utilizzo uno stretch lineare
 
