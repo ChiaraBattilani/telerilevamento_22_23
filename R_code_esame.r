@@ -28,3 +28,9 @@ mead_2022
 plot(mead_2000)
 plot(mead_2022)
 
+# Cambio la scala di colori per poter fare migliori osservazioni
+cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+
+png("mead2000_bande.png") 
+plot(mead_2000)
+dev.off()
