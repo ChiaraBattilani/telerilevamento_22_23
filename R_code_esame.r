@@ -72,6 +72,15 @@ dev.off()
 # red = banda 1
 # green = banda 2
 # blue = banda 3
-m1 <- ggRGB(mead_2000,r=1,g=2,b=3, stretch="lin") # utilizzo uno stretch lineare
-m2 <- ggRGB(mead_2022,r=1,g=2,b=3, stretch="lin") # utilizzo uno stretch lineare
+m1 <- ggRGB(mead_2000, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
+m2 <- ggRGB(mead_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
 
+# Faccio un plot in cui inserisco m1 e m2, tramite la funzione "grid.arrange", e lo salvo come png
+m1_m2 <- grid.arrange (m1,m2, nrow=1, ncol=2)
+plot(m1_m2)
+png("m1_m2.png", 900, 900) 
+plot(m1_m2)
+dev.off()
+
+# Svolgo il calcolo della PCA: utilizzo quindi la funzione ""rasterPCA"
+mead2000_pca <- rasterPCA(mead_2000)
