@@ -85,22 +85,24 @@ plot(b1_b2)
 dev.off()
 
 # Svolgo il calcolo della PCA: utilizzo quindi la funzione ""rasterPCA"
-mead2000_pca <- rasterPCA(mead_2000)
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-
-
-
+# Anno 1987
 bahrain1987_pca <- rasterPCA(bahrain_1987)
+bahrain1987_pca # Visualizzo le proprietà: call, model, map
+plot(bahrain1987_pca$map) # Plot per visualizzare le componenti
+summary(bahrain1987_pca$model)
+# Importance of components:
+#                             Comp.1     Comp.2      Comp.3
+# Standard deviation     106.2537273 8.51188543 4.114986375
+# Proportion of Variance   0.9921449 0.00636705 0.001488071
+# Cumulative Proportion    0.9921449 0.99851193 1.000000000
+
+# Anno 2022
+bahrain2022_pca <- rasterPCA(bahrain_2022)
+bahrain2022_pca
+plot(bahrain2022_pca$map)
+summary(bahrain2022_pca$model)
+# Importance of components:
+#                             Comp.1      Comp.2      Comp.3
+# Standard deviation     111.5726953 7.476395518 4.434248443
+# Proportion of Variance   0.9939669 0.004463141 0.001569987
+# Cumulative Proportion    0.9939669 0.998430013 1.000000000
