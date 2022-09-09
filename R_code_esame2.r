@@ -74,17 +74,19 @@ dev.off()
 # blue = banda 3
 plotRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin")
 plotRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin")
-b1 <- ggRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
-b2 <- ggRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
+a1 <- ggRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
+a2 <- ggRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
 
-# Faccio un plot in cui inserisco b1 e b2, tramite la funzione "grid.arrange", e lo salvo come png
-b1_b2 <- grid.arrange (b1,b2, nrow=1, ncol=2)
-plot(b1_b2)
-png("b1_b2.png", 900, 900) 
-plot(b1_b2)
+# Faccio un plot in cui inserisco a1 e a2, tramite la funzione "grid.arrange", e lo salvo come png
+a1_a2 <- grid.arrange (a1,a2, nrow=1, ncol=2)
+plot(a1_a2)
+png("a1_a2.png", 900, 900) 
+plot(a1_a2)
 dev.off()
 
-# Svolgo il calcolo della PCA: utilizzo quindi la funzione ""rasterPCA"
+#####
+
+# Svolgo il calcolo della PCA: utilizzo quindi la funzione "rasterPCA"
 # Anno 1987
 bahrain1987_pca <- rasterPCA(bahrain_1987)
 bahrain1987_pca # Visualizzo le proprietà: call, model, map
@@ -96,6 +98,10 @@ summary(bahrain1987_pca$model)
 # Proportion of Variance   0.9921449 0.00636705 0.001488071
 # Cumulative Proportion    0.9921449 0.99851193 1.000000000
 
+png("bahrain1987_pca.png", 900, 900) # Salvo il plot
+plot(bahrain1987_pca$map)
+dev.off()
+
 # Anno 2022
 bahrain2022_pca <- rasterPCA(bahrain_2022)
 bahrain2022_pca
@@ -106,3 +112,25 @@ summary(bahrain2022_pca$model)
 # Standard deviation     111.5726953 7.476395518 4.434248443
 # Proportion of Variance   0.9939669 0.004463141 0.001569987
 # Cumulative Proportion    0.9939669 0.998430013 1.000000000
+
+png("bahrain2022_pca.png", 900, 900) # Salvo il plot
+plot(bahrain2022_pca$map)
+dev.off()
+
+#####
+
+# Rilevo l'aumento delle costruzioni
+# Assegno le componenti dell'immagine ad un nome
+ba1_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.1
+ba2_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.2
+ba3_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.3
+
+ba1_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.1
+ba2_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.2
+ba3_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.3
+
+# Salvo i plot delle precedenti componenti
+png("ba1_1987", 900, 900) # Salvo il plot
+plot(ba1_1987$map)
+dev.off()
+
