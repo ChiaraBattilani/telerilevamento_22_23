@@ -68,18 +68,20 @@ png("bahrain2022_bandeCL.png")
 plot(bahrain_2022, col=cl, main="Bahrein 2022")
 dev.off()
 
-# Tramite la funzione "ggRGB" del pacchetto ggplot2, ottengo il raster con la colorazione reale dell'immagine; le bande sono nell'ordine:
+# Tramite la funzione "plotRGB" e "ggRGB" del pacchetto ggplot2, ottengo il raster con la colorazione reale dell'immagine; le bande sono nell'ordine:
 # red = banda 1
 # green = banda 2
 # blue = banda 3
-m1 <- ggRGB(mead_2000, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
-m2 <- ggRGB(mead_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
+plotRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin")
+plotRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin")
+b1 <- ggRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
+b2 <- ggRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
 
-# Faccio un plot in cui inserisco m1 e m2, tramite la funzione "grid.arrange", e lo salvo come png
-m1_m2 <- grid.arrange (m1,m2, nrow=1, ncol=2)
-plot(m1_m2)
-png("m1_m2.png", 900, 900) 
-plot(m1_m2)
+# Faccio un plot in cui inserisco b1 e b2, tramite la funzione "grid.arrange", e lo salvo come png
+b1_b2 <- grid.arrange (b1,b2, nrow=1, ncol=2)
+plot(b1_b2)
+png("b1_b2.png", 900, 900) 
+plot(b1_b2)
 dev.off()
 
 # Svolgo il calcolo della PCA: utilizzo quindi la funzione ""rasterPCA"
