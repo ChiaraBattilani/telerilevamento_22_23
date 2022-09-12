@@ -98,6 +98,7 @@ summary(bahrain1987_pca$model)
 # Proportion of Variance   0.9921449 0.00636705 0.001488071
 # Cumulative Proportion    0.9921449 0.99851193 1.000000000
 
+# Faccio un plot della PCA map 1987 e lo salvo come png
 png("bahrain1987_pca.png", 900, 900) # Salvo il plot
 plot(bahrain1987_pca$map)
 dev.off()
@@ -113,6 +114,7 @@ summary(bahrain2022_pca$model)
 # Proportion of Variance   0.9939669 0.004463141 0.001569987
 # Cumulative Proportion    0.9939669 0.998430013 1.000000000
 
+# Faccio un plot della PCA map 2022 e lo salvo come png
 png("bahrain2022_pca.png", 900, 900) # Salvo il plot
 plot(bahrain2022_pca$map)
 dev.off()
@@ -120,22 +122,56 @@ dev.off()
 #####
 
 # Rilevo l'aumento delle costruzioni
-# Assegno le componenti dell'immagine ad un nome
+# Assegno le componenti dell'immagine relativa al 1987 ad un nome
 ba1_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.1
 ba2_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.2
 ba3_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.3
 
+# Faccio un plot di ciascuna componente tramite "ggplot" e il pacchetto di colori "viridis"
 g1 <- ggplot() + 
 geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC1)) + 
-scale_fill_viridis(option = "viridis") +
+scale_fill_viridis(option = "inferno") +
 ggtitle("PC1")
 
+g2 <- ggplot() + 
+geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC2)) + 
+scale_fill_viridis(option = "inferno") +
+ggtitle("PC2")
+
+g3 <- ggplot() + 
+geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC3)) + 
+scale_fill_viridis(option = "inferno") +
+ggtitle("PC3")
+
+# Faccio un plot delle tre componenti del 1987 e lo salvo come png
+png("ba_1987.png", 900, 300)
+plot(g1+g2+g3, col=cl, main="Componenti principali dell'analisi")
+dev.off()
+
+# Assegno le componenti dell'immagine relativa al 2022 ad un nome
 ba1_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.1
 ba2_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.2
 ba3_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.3
 
-# Salvo i plot delle precedenti componenti
-png("ba1_1987", 900, 900) # Salvo il plot
-plot(ba1_1987$map)
+# Faccio un plot di ciascuna componente tramite "ggplot" e il pacchetto di colori "viridis"
+gg1 <- ggplot() + 
+geom_raster(bahrain2022_pca$map, mapping=aes(x=x, y=y, fill=PC1)) + 
+scale_fill_viridis(option = "inferno") +
+ggtitle("PC1")
+
+gg2 <- ggplot() + 
+geom_raster(bahrain2022_pca$map, mapping=aes(x=x, y=y, fill=PC2)) + 
+scale_fill_viridis(option = "inferno") +
+ggtitle("PC2")
+
+gg3 <- ggplot() + 
+geom_raster(bahrain2022_pca$map, mapping=aes(x=x, y=y, fill=PC3)) + 
+scale_fill_viridis(option = "inferno") +
+ggtitle("PC3")
+
+# Faccio un plot delle tre componenti del 2022 e lo salvo come png
+png("ba_2022.png", 900, 300)
+plot(gg1+gg2+gg3, col=cl, main="Componenti principali dell'analisi")
 dev.off()
+
 
