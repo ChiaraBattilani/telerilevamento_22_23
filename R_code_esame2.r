@@ -5,13 +5,15 @@
 # install.packages ("raster")
 library (raster)
 # install.packages ("rasterVis")
-library (rasterVis)
+#library (rasterVis)
 # install.packages ("RStoolbox") # per calcolare la PCA
 library (RStoolbox)
 # install.packages ("ggplot2") # per fare i plot con ggplot
 library (ggplot2)
-# install.packages ("gridExtra") # per fare un plot con più ggplots assieme
-library (gridExtra)
+# install.packages ("patchwork") # per fare un plot con più ggplots assieme
+library(patchwork)
+# install.packages ("viridis") # per avere differenti scale di colore
+library(viridis)
 
 # Settiamo la cartella di lavoro, in questo caso su Windows
 setwd ("C:/lab/esame2")
@@ -77,11 +79,9 @@ plotRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin")
 a1 <- ggRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
 a2 <- ggRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
 
-# Faccio un plot in cui inserisco a1 e a2, tramite la funzione "grid.arrange", e lo salvo come png
-a1_a2 <- grid.arrange (a1,a2, nrow=1, ncol=2)
-plot(a1_a2)
+# Faccio un plot affiancando a1 e a2, tramite il segno "+", e lo salvo come png
 png("a1_a2.png", 900, 900) 
-plot(a1_a2)
+plot(a1+a2)
 dev.off()
 
 #####
@@ -124,6 +124,11 @@ dev.off()
 ba1_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.1
 ba2_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.2
 ba3_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.3
+
+g1 <- ggplot() + 
+geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC1)) + 
+scale_fill_viridis(option = "viridis") +
+ggtitle("PC1")
 
 ba1_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.1
 ba2_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.2
