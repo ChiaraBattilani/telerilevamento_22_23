@@ -177,8 +177,13 @@ dev.off()
 # Calcolo la differenza tra la componente 1 del 1987 rispetto a quella del 2022
 # Utilizzo la componente 1 perchè risulta essere quella che ha una varianza maggiore per entrambe le annate (99%)
 dif <- ba1_1987 - ba1_2022
+
 # Per visualizzarla meglio nel plot cambio la scala di colori, e poi lo salvo in un png
 plot(dif, col=cl, main = "Aumento delle costruzioni")
 png("dif.png", 900, 900)
 plot(dif, col=cl, main = "Aumento delle costruzioni tra 1987 e 2022")
 dev.off()
+
+#################
+
+# Calcolo della deviazione standard
