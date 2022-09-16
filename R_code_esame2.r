@@ -201,14 +201,20 @@ dev.off()
 # Anno 1987
 b1987c <- unsuperClass(bahrain_1987, nClasses=2) # ottego un modello di bahrain_1987
 b1987c # visualizzo i parametri
-plot(b1987c$map)
-# classe 1 : area costruita
-# classe 2 : mare
+plot(b1987c$map) # Faccio un plot e lo salvo come png
+png("b1987c.png", 900, 900) 
+plot(b1987c$map, main="Classificazione anno 1987")
+dev.off()
+# classe 1 : area costruita (bianco)
+# classe 2 : mare (verde)
 
 # Anno 2022
 b2022c <- unsuperClass(bahrain_2022, nClasses=2) # ottego un modello di bahrain_2022
 b2022c # visualizzo i parametri
-plot(b2022c$map)
+plot(b2022c$map) # Faccio un plot e lo salvo come png
+png("b2022c.png", 900, 900) 
+plot(b2022c$map, main="Classificazione anno 2022")
+dev.off()
 # classe 1 : area costruita (bianco)
 # classe 2 : mare (verde)
 
@@ -219,7 +225,7 @@ freq(b1987c$map)
 # classe 2: 3353740 pixels (mare)
 tot1987 <- 4014912
 
-# Percentuale delle classi area costruita e mare
+# Percentuale delle classi "area costruita" e "mare"
 perc_costr_1987 <- 661172 * 100 / tot1987 # 16.46791 %
 perc_mare_1987 <- 3353740 * 100 / tot1987 # 83.53209 %
 
@@ -229,25 +235,34 @@ freq(b2022c$map)
 # classe 2: 3236010 pixels (mare)
 tot2022 <- 4014912
 
-# Percentuale delle classi area costruita e mare
+# Percentuale delle classi "area costruita" e "mare"
 perc_costr_2022 <- 778902 * 100 / tot2022 # 19.40023 %
 perc_mare_2022 <- 3236010 * 100 / tot2022 # 80.59977 %
 
-# Costruire un dataframe con i dati ottenuti
-# Colonne (campi)
+# Costrusco un dataframe con i dati ottenuti, le colonne saranno : classi, percentuali del 1987 e percentuali del 2022
 classi <- c("Area costruita", "Mare")
 perc_1987 <- c(16.46791, 83.53209)
 perc_2022 <- c(19.40023, 80.59977)
 multitemporal <- data.frame(classi, perc_1987, perc_2022)
 
-ggplot(multitemporal, aes(x=classi, y=perc_1987, fill=classi)) + 
+# Tramite ggplot creo un grafico a barre per mostrare le percentuali di "area costruita" e "mare" nel 1987 e lo salvo come png
+bar1987 <- ggplot(multitemporal, aes(x=classi, y=perc_1987, fill=classi)) + 
 geom_bar(stat="identity", color="black") +
 scale_fill_manual(values=c("#FFFFFF", "#009900")) +
-geom_text(aes(label = perc_1987), vjust= -0.3, size= 3.5) +
+geom_text(aes(label = perc_1987), vjust= -0.3, size= 10.5) +
 theme_minimal()
 
-ggplot(multitemporal, aes(x=classi, y=perc_2022, fill=classi)) + 
+png("bar1987.png", 900, 900) 
+plot(bar1987)
+dev.off()
+
+# Tramite ggplot creo un grafico a barre per mostrare le percentuali di "area costruita" e "mare" nel 2022 e lo salvo come png
+bar2022 <- ggplot(multitemporal, aes(x=classi, y=perc_2022, fill=classi)) + 
 geom_bar(stat="identity", color="black") +
 scale_fill_manual(values=c("#FFFFFF", "#009900")) +
 geom_text(aes(label = perc_2022), vjust= -0.3, size= 3.5) +
 theme_minimal()
+
+png("bar2022.png", 900, 900) 
+plot(bar2022)
+dev.off()
