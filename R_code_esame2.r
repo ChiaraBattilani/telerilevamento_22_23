@@ -4,8 +4,6 @@
 # Innanzitutto installiamo e carichiamo i pacchetti utili per far funzionare il codice
 # install.packages ("raster")
 library (raster)
-# install.packages ("rasterVis")
-#library (rasterVis)
 # install.packages ("RStoolbox") # per calcolare la PCA
 library (RStoolbox)
 # install.packages ("ggplot2") # per fare i plot con ggplot
@@ -84,7 +82,7 @@ png("a1_a2.png", 900, 900)
 plot(a1+a2)
 dev.off()
 
-#####
+#################
 
 # Svolgo il calcolo della PCA: utilizzo quindi la funzione "rasterPCA"
 # Anno 1987
@@ -197,3 +195,59 @@ plot(ds3, col=clds)
 png("ds3.png", 900, 900)
 plot(ds3, col=clds, main="Deviazione standard")
 dev.off()
+
+##########################
+# Svolgo la classificazione
+# Anno 1987
+b1987c <- unsuperClass(bahrain_1987, nClasses=2) # ottego un modello di bahrain_1987
+b1987c # visualizzo i parametri
+plot(b1987c$map)
+# classe 1 : area costruita
+# classe 2 : mare
+
+# Anno 2022
+b2022c <- unsuperClass(bahrain_2022, nClasses=2) # ottego un modello di bahrain_2022
+b2022c # visualizzo i parametri
+plot(b2022c$map)
+# classe 1 : area costruita (bianco)
+# classe 2 : mare (verde)
+
+# Calcolo le frequenze
+# Anno 1987
+freq(b1987c$map)
+# classe 1:  661172 pixels (area costruita)
+# classe 2: 3353740 pixels (mare)
+tot1987 <- 4014912
+
+# Percentuale delle classi area costruita e mare
+perc_costr_1987 <- 661172 * 100 / tot1987 # 16.46791 %
+perc_mare_1987 <- 3353740 * 100 / tot1987 # 83.53209 %
+
+# Anno 2022
+freq(b2022c$map)
+# classe 1:  778902 pixels (area costruita)
+# classe 2: 3236010 pixels (mare)
+tot2022 <- 4014912
+
+# Percentuale delle classi area costruita e mare
+perc_costr_2022 <- 778902 * 100 / tot2022 # 19.40023 %
+perc_mare_2022 <- 3236010 * 100 / tot2022 # 80.59977 %
+
+# Costruire un dataframe con i dati ottenuti
+# Colonne (campi)
+classi <- c("Area costruita", "Mare")
+perc_1987 <- c(16.46791, 83.53209)
+perc_2022 <- c(19.40023, 80.59977)
+multitemporal <- data.frame(classi, perc_1987, perc_2022)
+
+ggplot(multitemporal, aes(x=classi, y=perc_1987, fill=classi)) + 
+geom_bar(stat="identity", color="black") +
+scale_fill_manual(values=c("#FFFFFF", "#009900")) +
+geom_text(aes(label = perc_1987), vjust= -0.3, size= 3.5) +
+theme_minimal()
+
+ggplot(multitemporal, aes(x=classi, y=perc_2022, fill=classi)) + 
+geom_bar(stat="identity", color="black") +
+scale_fill_manual(values=c("#FFFFFF", "#009900")) +
+geom_text(aes(label = perc_2022), vjust= -0.3, size= 3.5) +
+theme_minimal()
