@@ -178,7 +178,7 @@ dev.off()
 # Utilizzo la componente 1 perchè risulta essere quella che ha una varianza maggiore per entrambe le annate (99%)
 dif <- ba1_1987 - ba1_2022
 
-# Per visualizzarla meglio nel plot cambio la scala di colori, e poi lo salvo in un png
+# Per visualizzarla meglio nel plot cambio la scala di colori, e poi lo salvo come png
 plot(dif, col=cl, main = "Aumento delle costruzioni")
 png("dif.png", 900, 900)
 plot(dif, col=cl, main = "Aumento delle costruzioni tra 1987 e 2022")
@@ -187,3 +187,13 @@ dev.off()
 #################
 
 # Calcolo della deviazione standard
+# La calcolo tramite la funzione "focal", la quale si basa sulla deviazione standard
+# In questo caso utilizziamo una finestra di 3x3 pixels
+ds3 <- focal(dif, matrix(1/9, 3, 3), fun=sd)
+# Faccio un plot della deviaizone dtandard con una nuova scala di colori per visualizzarla meglio, e lo salvo come png
+clds <- colorRampPalette(c('blue','green','pink','magenta','red','orange','yellow'))(100) # Creo una nuova scala di colori
+plot(ds3, col=clds)
+
+png("ds3.png", 900, 900)
+plot(ds3, col=clds, main="Deviazione standard")
+dev.off()
