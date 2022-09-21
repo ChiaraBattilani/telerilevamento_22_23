@@ -1,5 +1,8 @@
 # Codice R preparato per il progetto d'esame!
-# Il codice tratta della
+# Il codice è stato creato per analizzare le variazioni che vi sono state in Bahrein per quanto
+# riguarda l'aumento di aree in cui sono state fatte costruzioni tra il 1987 e il 2022.
+
+# I dati sono stati presi nel seguente sito: https://earthobservatory.nasa.gov/images/150313/building-bahrain
 
 # Innanzitutto installiamo e carichiamo i pacchetti utili per far funzionare il codice
 # install.packages ("raster")
