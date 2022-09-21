@@ -48,11 +48,11 @@ plot(bahrain_1987)
 plot(bahrain_2022)
 
 # Salvo entrambi i plot in formato png
-png("bahrain1987_bande.png") 
+png("bahrain1987_bande.png", 600, 600) 
 plot(bahrain_1987, main="Bahrain 1987")
 dev.off()
 
-png("bahrain2022_bande.png") 
+png("bahrain2022_bande.png", 600, 600) 
 plot(bahrain_2022, main="Bahrein 2022")
 dev.off()
 
@@ -60,11 +60,11 @@ dev.off()
 cl <- colorRampPalette(c("#FFFFCC", "#CEE2AC", "#9BC592", "#65A87D", "#218B6D", "#006E61")) (100)
 
 # Salvo i plot con la nuova scala di colori
-png("bahrain1987_bandeCL.png") 
+png("bahrain1987_bandeCL.png", 600, 600) 
 plot(bahrain_1987, col=cl, main="Bahrein 1987")
 dev.off()
 
-png("bahrain2022_bandeCL.png") 
+png("bahrain2022_bandeCL.png", 600, 600) 
 plot(bahrain_2022, col=cl, main="Bahrein 2022")
 dev.off()
 
@@ -78,7 +78,7 @@ a1 <- ggRGB(bahrain_1987, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch l
 a2 <- ggRGB(bahrain_2022, r=1, g=2, b=3, stretch="lin") # utilizzo uno stretch lineare
 
 # Faccio un plot affiancando a1 e a2, tramite il segno "+", e lo salvo come png
-png("a1_a2.png", 900, 900) 
+png("a1_a2.png", 600, 600) 
 plot(a1+a2)
 dev.off()
 
@@ -97,7 +97,7 @@ summary(bahrain1987_pca$model)
 # Cumulative Proportion    0.9921449 0.99851193 1.000000000
 
 # Faccio un plot della PCA map 1987 e lo salvo come png
-png("bahrain1987_pca.png", 900, 900) # Salvo il plot
+png("bahrain1987_pca.png", 600, 600) # Salvo il plot
 plot(bahrain1987_pca$map)
 dev.off()
 
@@ -113,7 +113,7 @@ summary(bahrain2022_pca$model)
 # Cumulative Proportion    0.9939669 0.998430013 1.000000000
 
 # Faccio un plot della PCA map 2022 e lo salvo come png
-png("bahrain2022_pca.png", 900, 900) # Salvo il plot
+png("bahrain2022_pca.png", 600, 600) # Salvo il plot
 plot(bahrain2022_pca$map)
 dev.off()
 
@@ -142,7 +142,7 @@ scale_fill_viridis(option = "inferno") +
 ggtitle("PC3")
 
 # Faccio un plot delle tre componenti del 1987 e lo salvo come png
-png("ba_1987.png", 900, 300)
+png("ba_1987_.png", 900, 300)
 plot(g1+g2+g3, col=cl, main="Componenti principali dell'analisi")
 dev.off()
 
@@ -178,7 +178,7 @@ dif <- ba1_1987 - ba1_2022
 
 # Per visualizzarla meglio nel plot cambio la scala di colori, e poi lo salvo come png
 plot(dif, col=cl, main = "Aumento delle costruzioni")
-png("dif.png", 900, 900)
+png("dif.png", 600, 600)
 plot(dif, col=cl, main = "Aumento delle costruzioni tra 1987 e 2022")
 dev.off()
 
@@ -192,7 +192,7 @@ ds3 <- focal(dif, matrix(1/9, 3, 3), fun=sd)
 clds <- colorRampPalette(c('blue','green','pink','magenta','red','orange','yellow'))(100) # Creo una nuova scala di colori
 plot(ds3, col=clds)
 
-png("ds3.png", 900, 900)
+png("ds3.png", 600, 600)
 plot(ds3, col=clds, main="Deviazione standard")
 dev.off()
 
@@ -202,67 +202,71 @@ dev.off()
 b1987c <- unsuperClass(bahrain_1987, nClasses=2) # ottego un modello di bahrain_1987
 b1987c # visualizzo i parametri
 plot(b1987c$map) # Faccio un plot e lo salvo come png
-png("b1987c.png", 900, 900) 
+png("b1987c.png", 600, 600) 
 plot(b1987c$map, main="Classificazione anno 1987")
 dev.off()
-# classe 1 : area costruita (bianco)
-# classe 2 : mare (verde)
+# Nel caso del plot salvato in png:
+# classe 1 : mare (bianco)
+# classe 2 : area costruita (verde)
 
 # Anno 2022
 b2022c <- unsuperClass(bahrain_2022, nClasses=2) # ottego un modello di bahrain_2022
 b2022c # visualizzo i parametri
 plot(b2022c$map) # Faccio un plot e lo salvo come png
-png("b2022c.png", 900, 900) 
+png("b2022c.png", 600, 600) 
 plot(b2022c$map, main="Classificazione anno 2022")
 dev.off()
-# classe 1 : area costruita (bianco)
-# classe 2 : mare (verde)
+# Nel caso del plot salvato in png:
+# classe 1 : mare (bianco)
+# classe 2 : area costruita (verde)
 
 # Calcolo le frequenze
 # Anno 1987
 freq(b1987c$map)
-# classe 1:  661172 pixels (area costruita)
-# classe 2: 3353740 pixels (mare)
+# Nel caso del plot salvato in png:
+# classe 1: 3354756 pixels (mare)
+# classe 2:  660156 pixels (area costruita)
 tot1987 <- 4014912
 
 # Percentuale delle classi "area costruita" e "mare"
-perc_costr_1987 <- 661172 * 100 / tot1987 # 16.46791 %
-perc_mare_1987 <- 3353740 * 100 / tot1987 # 83.53209 %
+perc_costr_1987 <- 660156 * 100 / tot1987 # 16.4426 %
+perc_mare_1987 <- 3354756 * 100 / tot1987 # 83.5574 %
 
 # Anno 2022
 freq(b2022c$map)
-# classe 1:  778902 pixels (area costruita)
-# classe 2: 3236010 pixels (mare)
+# Nel caso del plot salvato in png:
+# classe 1: 3234415 pixels (mare)
+# classe 2:  780497 pixels (area costruita)
 tot2022 <- 4014912
 
 # Percentuale delle classi "area costruita" e "mare"
-perc_costr_2022 <- 778902 * 100 / tot2022 # 19.40023 %
-perc_mare_2022 <- 3236010 * 100 / tot2022 # 80.59977 %
+perc_costr_2022 <- 780497 * 100 / tot2022 # 19.43995 %
+perc_mare_2022 <- 3234415 * 100 / tot2022 # 80.56005 %
 
 # Costrusco un dataframe con i dati ottenuti, le colonne saranno : classi, percentuali del 1987 e percentuali del 2022
 classi <- c("Area costruita", "Mare")
-perc_1987 <- c(16.46791, 83.53209)
-perc_2022 <- c(19.40023, 80.59977)
+perc_1987 <- c(16.4426, 83.5574)
+perc_2022 <- c(19.43995, 80.56005)
 multitemporal <- data.frame(classi, perc_1987, perc_2022)
 
 # Tramite ggplot creo un grafico a barre per mostrare le percentuali di "area costruita" e "mare" nel 1987 e lo salvo come png
 bar1987 <- ggplot(multitemporal, aes(x=classi, y=perc_1987, fill=classi)) + 
 geom_bar(stat="identity", color="black") +
-scale_fill_manual(values=c("#FFFFFF", "#009900")) +
-geom_text(aes(label = perc_1987), vjust= -0.3, size= 10.5) +
+scale_fill_manual(values=c("#009900", "#FFFFFF")) +
+geom_text(aes(label = perc_1987), vjust= -0.3, size= 4.5) +
 theme_minimal()
 
-png("bar1987.png", 900, 900) 
+png("bar1987.png", 600, 600) # Faccio un plot e lo salvo come png
 plot(bar1987)
 dev.off()
 
 # Tramite ggplot creo un grafico a barre per mostrare le percentuali di "area costruita" e "mare" nel 2022 e lo salvo come png
 bar2022 <- ggplot(multitemporal, aes(x=classi, y=perc_2022, fill=classi)) + 
 geom_bar(stat="identity", color="black") +
-scale_fill_manual(values=c("#FFFFFF", "#009900")) +
-geom_text(aes(label = perc_2022), vjust= -0.3, size= 3.5) +
+scale_fill_manual(values=c("#009900", "#FFFFFF")) +
+geom_text(aes(label = perc_2022), vjust= -0.3, size= 4.5) +
 theme_minimal()
 
-png("bar2022.png", 900, 900) 
+png("bar2022.png", 600, 600) # Faccio un plot e lo salvo come png
 plot(bar2022)
 dev.off()
