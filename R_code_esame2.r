@@ -5,10 +5,10 @@
 # I dati sono stati presi nel seguente sito: https://earthobservatory.nasa.gov/images/150313/building-bahrain
 
 # Le analisi svolte sulle immagini riguardano:
-# 1. Calcolo della pca
-# 2. Rilevazione dell'aumento delle costruzioni
-# 3. Calcolo della deviazione standard
-# 4. Classificazione
+# - Calcolo della pca
+# - Rilevazione dell'aumento delle costruzioni
+# - Calcolo della deviazione standard
+# - Classificazione
 
 # Innanzitutto installiamo e carichiamo i pacchetti utili per far funzionare il codice
 # install.packages ("raster")
