@@ -129,14 +129,14 @@ dev.off()
 # Assegno la componente 1 dell'immagine relativa al 1987 ad un nome
 ba1_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.1
 
+# Assegno la componente 1 dell'immagine relativa al 2022 ad un nome
+ba1_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.1
+
 # Faccio un plot della prima componente tramite "ggplot" e il pacchetto di colori "viridis" per una miglior visualizzazione
 g1 <- ggplot() + 
 geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC1)) + 
 scale_fill_viridis(option = "inferno") +
 ggtitle("PC1 1987")
-
-# Assegno la componente 1 dell'immagine relativa al 2022 ad un nome
-ba1_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.1
 
 # Faccio un plot della prima componente tramite "ggplot" e il pacchetto di colori "viridis" per una miglior visualizzazione
 gg1 <- ggplot() + 
@@ -222,7 +222,7 @@ tot2022 <- 4014912
 perc_costr_2022 <- 780497 * 100 / tot2022 # 19.43995 %
 perc_mare_2022 <- 3234415 * 100 / tot2022 # 80.56005 %
 
-# Costrusco un dataframe con i dati ottenuti, le colonne saranno : classi, percentuali del 1987 e percentuali del 2022
+# Costruisco un dataframe con i dati ottenuti, le colonne saranno : classi, percentuali del 1987 e percentuali del 2022
 classi <- c("Area costruita", "Mare")
 perc_1987 <- c(16.4426, 83.5574)
 perc_2022 <- c(19.43995, 80.56005)
