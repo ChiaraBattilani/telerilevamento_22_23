@@ -151,7 +151,7 @@ scale_fill_viridis(option = "inferno") +
 ggtitle("PC3")
 
 # Faccio un plot delle tre componenti del 1987 e lo salvo come png
-png("ba_1987_.png", 900, 300)
+png("ba_1987.png", 900, 300)
 plot(g1+g2+g3, col=cl, main="Componenti principali dell'analisi")
 dev.off()
 
