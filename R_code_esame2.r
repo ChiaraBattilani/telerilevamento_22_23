@@ -4,6 +4,12 @@
 
 # I dati sono stati presi nel seguente sito: https://earthobservatory.nasa.gov/images/150313/building-bahrain
 
+# Le analisi svolte sulle immagini riguardano:
+# 1. Calcolo della pca
+# 2. Rilevazione dell'aumento delle costruzioni
+# 3. Calcolo della deviazione standard
+# 4. Classificazione
+
 # Innanzitutto installiamo e carichiamo i pacchetti utili per far funzionare il codice
 # install.packages ("raster")
 library (raster)
@@ -191,7 +197,7 @@ dev.off()
 # La calcolo tramite la funzione "focal", la quale si basa sulla deviazione standard
 # In questo caso utilizziamo una finestra di 3x3 pixels
 ds3 <- focal(dif, matrix(1/9, 3, 3), fun=sd)
-# Faccio un plot della deviaizone dtandard con una nuova scala di colori per visualizzarla meglio, e lo salvo come png
+# Faccio un plot della deviaizone standard con una nuova scala di colori per visualizzarla meglio, e lo salvo come png
 clds <- colorRampPalette(c('blue','green','pink','magenta','red','orange','yellow'))(100) # Creo una nuova scala di colori
 plot(ds3, col=clds)
 
