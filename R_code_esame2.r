@@ -126,62 +126,32 @@ png("bahrain2022_pca.png", 600, 600) # Salvo il plot
 plot(bahrain2022_pca$map)
 dev.off()
 
-#################
-
-# Rilevo l'aumento delle costruzioni
-# Assegno le componenti dell'immagine relativa al 1987 ad un nome
+# Assegno la componente 1 dell'immagine relativa al 1987 ad un nome
 ba1_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.1
-ba2_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.2
-ba3_1987 <- bahrain_1987$bahrain_tm5_1987229_lrg.3
 
-# Faccio un plot di ciascuna componente tramite "ggplot" e il pacchetto di colori "viridis"
+# Faccio un plot della prima componente tramite "ggplot" e il pacchetto di colori "viridis" per una miglior visualizzazione
 g1 <- ggplot() + 
 geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC1)) + 
 scale_fill_viridis(option = "inferno") +
-ggtitle("PC1")
+ggtitle("PC1 1987")
 
-g2 <- ggplot() + 
-geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC2)) + 
-scale_fill_viridis(option = "inferno") +
-ggtitle("PC2")
-
-g3 <- ggplot() + 
-geom_raster(bahrain1987_pca$map, mapping=aes(x=x, y=y, fill=PC3)) + 
-scale_fill_viridis(option = "inferno") +
-ggtitle("PC3")
-
-# Faccio un plot delle tre componenti del 1987 e lo salvo come png
-png("ba_1987.png", 900, 300)
-plot(g1+g2+g3, col=cl, main="Componenti principali dell'analisi")
-dev.off()
-
-# Assegno le componenti dell'immagine relativa al 2022 ad un nome
+# Assegno la componente 1 dell'immagine relativa al 2022 ad un nome
 ba1_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.1
-ba2_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.2
-ba3_2022 <- bahrain_2022$bahrain_oli_2022229_lrg.3
 
-# Faccio un plot di ciascuna componente tramite "ggplot" e il pacchetto di colori "viridis"
+# Faccio un plot della prima componente tramite "ggplot" e il pacchetto di colori "viridis" per una miglior visualizzazione
 gg1 <- ggplot() + 
 geom_raster(bahrain2022_pca$map, mapping=aes(x=x, y=y, fill=PC1)) + 
 scale_fill_viridis(option = "inferno") +
-ggtitle("PC1")
+ggtitle("PC1 2022")
 
-gg2 <- ggplot() + 
-geom_raster(bahrain2022_pca$map, mapping=aes(x=x, y=y, fill=PC2)) + 
-scale_fill_viridis(option = "inferno") +
-ggtitle("PC2")
-
-gg3 <- ggplot() + 
-geom_raster(bahrain2022_pca$map, mapping=aes(x=x, y=y, fill=PC3)) + 
-scale_fill_viridis(option = "inferno") +
-ggtitle("PC3")
-
-# Faccio un plot delle tre componenti del 2022 e lo salvo come png
-png("ba_2022.png", 900, 300)
-plot(gg1+gg2+gg3, col=cl, main="Componenti principali dell'analisi")
+# Faccio un plot della componente 1 di entrambe le annate e lo salvo come png
+png("ba_1987_2022.png", 600, 300)
+plot(g1+gg1)
 dev.off()
 
-# Calcolo la differenza tra la componente 1 del 1987 rispetto a quella del 2022
+#################
+
+# Rilevo l'aumento delle costruzioni calcolando la differenza tra la componente 1 del 1987 rispetto a quella del 2022
 # Utilizzo la componente 1 perchè risulta essere quella che ha una varianza maggiore per entrambe le annate (99%)
 dif <- ba1_1987 - ba1_2022
 
