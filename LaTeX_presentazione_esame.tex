@@ -1,0 +1,181 @@
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[T1]{fontenc}
+
+\usetheme{Szeged}
+\usecolortheme{spruce}
+
+\title{Esame Telerilevamento Geo-ecologico}
+\institute{Alma Mater Studiorum - Università di Bologna\\Telerilevamento Geo-ecologico}
+\author{Studente: Chiara Battilani \\ Docente: Duccio Rocchini}
+\date{A.A. 2021/2022}
+
+\begin{document}
+
+\maketitle
+
+\AtBeginSection[]
+{	
+\begin{frame}
+\frametitle{Indice}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+\begin{frame}
+\frametitle{Indice} 
+\tableofcontents[currentsubsection]  
+\end{frame}
+}
+
+\section{Scopi del progetto}
+
+\begin{frame}{Scopi del progetto}
+\frametitle{Obiettivo principale del progetto}
+\begin{itemize}
+\item Analizzare le variazioni che vi sono state in Bahrein per quanto riguarda l'aumento delle aree in cui sono state fatte costruzioni tra il 1987 e il 2022.
+\end{itemize}
+\end{frame}
+
+\section{Inquadramento geografico}
+
+\begin{frame}{Inquadramento geografico}
+L'area analizzata rappresenta il Bahrein (nel riquadro rosso), situato nel Golfo Persico (da Google Earth).\\
+\includegraphics[width=0.9\textwidth]{1_inquadramento.jpg}
+\centering
+\end{frame}
+
+\section{Metodi di analisi}
+
+\begin{frame}{Metodi di analisi}
+\begin{itemize}
+\item Importazione immagini e visualizzazione.
+\bigskip
+\item Calcolo pca (principal component analysis) delle immagini.
+\bigskip
+\item Rilevazione dell'aumento delle zone costruite.
+\bigskip
+\item Calcolo deviazione standard.
+\bigskip
+\item Classificazione delle immagini.
+\end{itemize}
+\end{frame}
+
+\section{Importazione immagini e visualizzazione}
+
+\begin{frame}{Script utilizzato}
+\begin{tiny}
+\lstinputlisting[language=R]{1_script.r}
+\end{tiny}
+\end{frame}
+
+\begin{frame}{Bande Bahrein 1987, con palette cl}
+\includegraphics[width=0.6\textwidth]{bahrain1987_bandeCL.png}
+\centering
+\end{frame}
+
+\begin{frame}{Bande Bahrein 2022, con palette cl}
+\includegraphics[width=0.6\textwidth]{bahrain2022_bandeCL.png}
+\centering
+\end{frame}
+
+\begin{frame}{Comparazione immagini RGB 1987-2022}
+\includegraphics[width=0.8\textwidth]{a1_a2_.png}
+\centering
+\end{frame}
+
+\section{Calcolo pca (principal component analysis) delle immagini}
+
+\begin{frame}{Script utilizzato}
+(Esempio per l'anno 1987)
+\bigskip
+\begin{tiny}
+\lstinputlisting[language=R]{2_script.r}
+\end{tiny}
+\end{frame}
+
+\begin{frame}{Componenti pca 1987}
+\includegraphics[width=0.6\textwidth]{bahrain1987_pca.png}
+\centering
+\end{frame}
+
+\begin{frame}{Componenti pca 2022}
+\includegraphics[width=0.6\textwidth]{bahrain2022_pca.png}
+\centering
+\end{frame}
+
+\begin{frame}{Componente 1 del 1987 e 2022 con "viridis"}
+\centering
+\includegraphics[width=0.9\textwidth]{ba_1987_2022.png}
+\end{frame}
+
+\section{Rilevazione dell'aumento delle zone costruite}
+
+\begin{frame}{Script utilizzato}
+\begin{tiny}
+\lstinputlisting[language=R]{3_script.r}
+\end{tiny}
+\end{frame}
+
+\begin{frame}{Differenza tra la componente 1 del 1987 e del 2022}
+\includegraphics[width=0.65\textwidth]{dif.png}
+\centering
+\end{frame}
+
+\section{Calcolo deviazione standard}
+
+\begin{frame}{Script utilizzato}
+\begin{tiny}
+\lstinputlisting[language=R]{4_script.r}
+\end{tiny}
+\end{frame}
+
+\begin{frame}{Mappa deviazione standard}
+\includegraphics[width=0.65\textwidth]{ds3.png}
+\centering
+\end{frame}
+
+\section{Classificazione delle immagini}
+
+\begin{frame}{Script utilizzato}
+(Esempio per l'anno 1987)
+\bigskip
+\begin{tiny}
+\lstinputlisting[language=R]{5_script.r}
+\end{tiny}
+\end{frame}
+
+\begin{frame}{Mappe classificazione 1987 e 2022}
+\centering
+\includegraphics[width=0.5\textwidth]{b1987c.png}\includegraphics[width=0.5\textwidth]{b2022c.png}
+\end{frame}
+
+\begin{frame}{Grafico a barre del 1987}
+\centering
+\includegraphics[width=0.6\textwidth]{bar1987.png}
+\end{frame}
+\begin{frame}{Grafico a barre del 2022}
+\centering
+\includegraphics[width=0.6\textwidth]{bar2022.png}
+\end{frame}
+
+\section{Conclusioni}
+\begin{frame}{Conclusioni}
+\begin{itemize}
+\item L'analisi delle immagini riferite al 1987 e al 2022, ha permesso di osservare come lo stato del Bahrein in 35 anni abbia subito, principalmente nella zona a nord, fenomeni antropici di creazione di zone adibite alla costruzione di edifici per far fronte al grande incremento della popolazione.
+\bigskip
+\item Dallo studio sulle immagini è stato calcolato un aumento del 3\% di tali zone.
+\end{itemize}{}
+\end{frame}
+
+\begin{frame}
+\centering
+\bigskip
+\bigskip
+\huge
+Grazie per l'attenzione!    
+\end{frame}{}
+\end{document}
