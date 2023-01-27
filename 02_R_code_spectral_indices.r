@@ -1,4 +1,4 @@
-# Carico e installo pacchetti
+# Carico e installo pacchetti 
 library(raster)
 library(RStoolbox) # RStoolbox serve per calcolare l'indice di vegetazione
 # install.packages("rasterdiv") # rasterdiv serve per calcolare indici di diversità su matrici numeriche
