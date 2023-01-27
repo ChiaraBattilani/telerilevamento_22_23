@@ -7,7 +7,7 @@ library(raster)
 setwd("C:/lab") # Windows
 
 # import
-# Assegno all'oggetto "l2011" la funzione "brick"così importo l'immagine
+# Assegno all'oggetto "l2011" la funzione "brick" così importo l'immagine
 l2011 <- brick("p224r63_2011.grd")
 l2011 # chiamo l'oggetto per vedere le proprietà come dimensioni, classe, ecc.
 
