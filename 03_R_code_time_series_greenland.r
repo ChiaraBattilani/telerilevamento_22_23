@@ -23,7 +23,7 @@ plot(lst2005, col=cl)
 plot(lst2010, col=cl)
 plot(lst2015, col=cl)
 
-# Importa tutto le immagini contemporaneamente
+# Importa tutte le immagini contemporaneamente
 rlist <- list.files(pattern="lst") # creo la lista
 rlist # Visualizzo i parametri
 import <- lapply(rlist, raster) # importo tutto assieme
