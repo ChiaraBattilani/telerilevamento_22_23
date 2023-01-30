@@ -10,7 +10,7 @@ plotRGB(so, 1, 2, 3, stretch="lin") # plot in forma lineare e a istogramma
 plotRGB(so, 1, 2, 3, stretch="hist")
 
 # Classifico l'immagine in base alla disposizione dei pixel nello spazio delle tre bande, e per farlo
-# utilizzo "unsuperClass", con cui scelgo il nmero di classi volute
+# utilizzo "unsuperClass", con cui scelgo il numero di classi volute
 soc <- unsuperClass(so, nClasses=3)
 
 cl <- colorRampPalette(c('yellow','black','red'))(100) # creo una nuova scala di colori
@@ -32,7 +32,7 @@ gc
 
 plotRGB(gc, r=1, g=2, b=3, stretch="lin")
 
-# cambio lo stretch modalità istogramma, così ho un maggior contrasto
+# cambio lo stretch in modalità istogramma, così ho un maggior contrasto
 plotRGB(gc, r=1, g=2, b=3, stretch="hist")
 
 # classificazione
