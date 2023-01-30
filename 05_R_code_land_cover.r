@@ -64,7 +64,7 @@ prop_forest_92 <- 305959 / tot92
 # Percentuale della classe foresta
 perc_forest_92 <- 305959 * 100 / tot92
 
-# Eserczio: calcola la percentuale delle aree agricole del 1992
+# Esercizio: calcola la percentuale delle aree agricole del 1992
 # metodo 1
 perc_agr_92 <- 100 - perc_forest_92
 # metodo 2
@@ -105,7 +105,7 @@ multitemporal <- data.frame(class, percent_1992, percent_2006)
 ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) + 
 geom_bar(stat="identity", fill="white")
 
-# Esercizio: fai ostesso grafico per il 2006
+# Esercizio: fai lo stesso grafico per il 2006
 ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) + 
 geom_bar(stat="identity", fill="white")
 
