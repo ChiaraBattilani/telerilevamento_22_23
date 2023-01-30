@@ -17,7 +17,7 @@ plot(l2011) # plot dell'oggetto, vedo le bande di riflettanza
 # trmite colorRampPalette cambio i colori nell'immagine per poter fare migliori osservazioni
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 
-plot(l2011, col=cl) # "col" definisce i colori nuovo plot con colori diversi dal precedente
+plot(l2011, col=cl) # "col" definisce i colori, nuovo plot con colori diversi dal precedente
 
 # dev.off() # Chiude finestra grafica
 
