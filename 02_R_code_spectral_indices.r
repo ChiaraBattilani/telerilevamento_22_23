@@ -89,4 +89,3 @@ plot(si2006, col=cl)
 
 # Carico il pacchetto "rasterdiv" e faccio il plot
 plot(copNDVI)
-
