@@ -64,26 +64,3 @@ g1+g4
 
 plotRGB(p224r63_2011respca$map, 1, 2, 3, stretch="lin")
 plotRGB(p224r63_2011respca$map, 5, 6, 7, stretch="lin")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
