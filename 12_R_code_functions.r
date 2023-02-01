@@ -1,4 +1,4 @@
-# Codice R per creare funzioni
+# Codice R per creare funzioni 
 
 library(raster) # carico i pacchetti
 setwd("C:/lab") # Setto la cartella di lavoro su Windows
