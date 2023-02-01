@@ -16,14 +16,14 @@ species$Occurrence # valori che indicano punti nello spazio in cui c'è assenza 
 # Assegno ad un oggetto le occurence della specie
 occ <- species$Occurrence
 
-plot(species[occ == 1,], col="blue", pch=19) # plotto solo quelli con valore pari a 1 ovvero le presenze
+plot(species[occ == 1,], col="blue", pch=19) # plotto solo quelli con valore pari a 1, ovvero le presenze
 points(species[occ == 0,], col="red", pch=19) # così aggungo i punti 0 delle assenze al plot precedente senza cambiare il plot
 
 # Predisctors: prima faccio il percorso della funzione "system files"
 path <- system.file("external", package="sdm")
 
 # Lista di predittori
-lst <- list.files(path=path, pattern='asc', full.names=T) # full.names is needed in case you want to maintain the whole path in the name of the file
+lst <- list.files(path=path, pattern='asc', full.names=T) # full.names serve nel caso in cui si voglia mantenere l'intero percorso nel nome della lista
 
 # Faccio uno stack (non serve il brick in quetso caso)
 preds <- stack(lst) # non avremo le bande in questo caso, ma elevazione, precipitazione, temperatura e vegetazione
@@ -57,7 +57,7 @@ datasdm <- sdmData(train=species, predictors=preds)
 m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, data= datasdm, methods="glm")
 
 # Faccio una previsione della mappa finale tramite "predict"
-p1 <- predict(m1, newdata=preds) # sulla base del modello m1 dove è più prbabile trovare una specie
+p1 <- predict(m1, newdata=preds) # sulla base del modello m1 dove è più probabile trovare una specie
 
 # Plotto la previsione assieme ai punti della distribuzione
 plot(p1, col=cl)
