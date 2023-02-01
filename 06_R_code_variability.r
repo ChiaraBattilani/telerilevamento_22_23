@@ -26,7 +26,7 @@ g2 <- ggRGB(sen, 2, 1, 3)
 # Tramite patchwork:
 g1+g2 
 
-# Calcolo dela variabilità sul NIR
+# Calcolo della variabilità sul NIR
 nir <- sen[[1]]
 sd3 <- focal(nir, matrix(1/9, 3, 3), fun=sd) # Utilizzo "focal" (funzione che si basa sulla deviazione standard) con una finestra di 3x3 pixels
 
