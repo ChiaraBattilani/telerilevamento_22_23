@@ -1,4 +1,4 @@
-# Codice R per calcolare lavariabilità spaziale basata su mappe multivariate
+# Codice R per calcolare la variabilità spaziale basata su mappe multivariate
 
 library(raster) # carico i pacchetti
 library(RStoolbox)
