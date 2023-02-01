@@ -6,7 +6,7 @@ library(ggplot2)
 
 # Field sparrow----
 
-data("fiespa_occ") # leggo file di sistema con dati degli uccelli traite "data"
+data("fiespa_occ") # leggo file di sistema con dati degli uccelli tramite "data"
 
 # creo metriche tramite "metrics_pull"
 met1 <- metrics_pull(fiespa_occ)
@@ -27,7 +27,7 @@ map_multiples(met1, pl_custom, labels =  names(fiespa_occ), ncol = 4)
 met1_distill <- metrics_distill(fiespa_occ)
 
 map_single(met1_distill, pal) # parti più colorate hanno una maggior specificità per un singolo layer
-# in questo caso i mesi (ovvero le specie stanno per un certo mese in quella zona), le parti grigie
+# in questo caso i mesi (ovvero le specie stanno per un certo mese in quella zona); le parti grigie
 # riguardano quelle con minor specificità, ovvero in questo caso significa che le specie sono presenti
 # nelle zone grigie per la maggior parte dei mesi.
 
