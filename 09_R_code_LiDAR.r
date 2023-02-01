@@ -38,7 +38,7 @@ geom_raster(chm_2004, mapping =aes(x=x, y=y, fill=layer)) +
 scale_fill_viridis() +
 ggtitle("CHM 2004 San Genesio/Jenesien")
 
-# i due chm hanno due risoluzioni diverse quindi bisogna fare un resample
+# i due chm hanno due risoluzioni differenti quindi bisogna fare un resample
 # del raster che ha una maggior risoluzione (2013) per fare in modo che abbia la stessa
 # risoluzione di quello del 2004
 
